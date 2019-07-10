@@ -1,17 +1,14 @@
 package com.pskwiercz.demojpa.services;
 
 import com.pskwiercz.demojpa.entities.Message;
-import org.springframework.stereotype.Service;
+import com.pskwiercz.demojpa.util.HibernateUtil;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
-@Service
-public class MessageService {
+public class MixedMessageService {
 
-    public void saveMessage(String messageText) {
+    public void saveMixedMessage(String messageText) {
         EntityManager em = getEntityManager();
         EntityTransaction txn = em.getTransaction();
         try {
@@ -34,7 +31,7 @@ public class MessageService {
 
     }
 
-    public Message findMessage(Long id) {
+    public Message findMixedMessage(Long id) {
         Message msg = null;
 
         EntityManager em = getEntityManager();
@@ -59,7 +56,7 @@ public class MessageService {
     }
 
     private EntityManager getEntityManager() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("demo-jpa");
-        return emf.createEntityManager();
+        EntityManager em = HibernateUtil.getSessionFactory().openSession();
+        return em;
     }
 }
