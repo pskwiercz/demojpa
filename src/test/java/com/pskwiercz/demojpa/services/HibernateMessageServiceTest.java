@@ -9,23 +9,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.*;
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MessageServiceTest {
+public class HibernateMessageServiceTest {
 
-    private static final String TEST_MSG = "Test message for JPA";
+    private static final String TEST_MSG = "Test message for Hibernate";
 
     @Autowired
-    private MessageService messageService;
+    private HibernateMessageService messageService;
 
     @Test
     public void saveMessageTest() {
-        messageService.saveMessage(TEST_MSG);
+        messageService.saveMessageHibernate(TEST_MSG);
 
-        Message msg = messageService.findMessage(1L);
+        Message msg = messageService.findMessageHibernate(1L);
 
         assertEquals(TEST_MSG, msg.getText());
     }
-
 }
