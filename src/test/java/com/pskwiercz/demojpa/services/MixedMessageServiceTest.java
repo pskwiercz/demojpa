@@ -16,13 +16,13 @@ public class MixedMessageServiceTest {
     private static final String TEST_MSG = "Test message for Mixed - Configuration Hibernate, queries Entity manager";
 
     @Autowired
-    private HibernateMessageService messageService;
+    private MixedMessageService messageService;
 
     @Test
     public void saveMessageTest() {
-        messageService.saveMessageHibernate(TEST_MSG);
+        messageService.saveMixedMessage(TEST_MSG);
 
-        Message msg = messageService.findMessageHibernate(1L);
+        Message msg = messageService.findMixedMessage(1L);
 
         assertEquals(TEST_MSG, msg.getText());
     }

@@ -2,10 +2,12 @@ package com.pskwiercz.demojpa.services;
 
 import com.pskwiercz.demojpa.entities.Message;
 import com.pskwiercz.demojpa.util.HibernateUtil;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+@Service
 public class MixedMessageService {
 
     public void saveMixedMessage(String messageText) {
